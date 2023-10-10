@@ -73,8 +73,8 @@ local circle = Drawingnew("Circle")
 circle.Transparency = 1
 circle.Thickness = 2
 circle.Color = Aiming.FOVColour
-circle.Filled = false
-circle.Anchored = false
+circle.Filled = true
+circle.Anchored = true
 Aiming.FOVCircle = circle
 
 -- // Update
