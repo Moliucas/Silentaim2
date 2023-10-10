@@ -5,6 +5,7 @@ local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
 local GuiService = game:GetService("GuiService")
 local RunService = game:GetService("RunService")
+local screenSize = game:GetService("GuiService"):GetScreenSize()
 
 -- // Vars
 local Heartbeat = RunService.Heartbeat
@@ -85,7 +86,7 @@ function Aiming.UpdateFOV()
     -- // Set Circle Properties
     circle.Visible = Aiming.ShowFOV
     circle.Radius = (Aiming.FOV * 3)
-    circle.Position = Vector2new(1239.0, 537.0)
+    circle.Position = Vector2new(screenSize.X / 1239.0, screenSize.Y / 537.0)
     circle.NumSides = Aiming.FOVSides
     circle.Color = Aiming.FOVColour
 
