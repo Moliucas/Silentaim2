@@ -6,23 +6,6 @@ local Workspace = game:GetService("Workspace")
 local GuiService = game:GetService("GuiService")
 local RunService = game:GetService("RunService")
 
--- Anchor
-local gui = Gui.new("Gui")
-gui.Parent = game.Players.LocalPlayer.PlayerGui
-
-local button = TextButton.new("ToggleButton")
-button.Size = UDim2.new(0.2, 0, 0.2, 0)
-button.Position = UDim2.new(0.5, 0, 0.5, 0)
-
-button.MouseButton1Click:Connect(function()
-    circle.Anchored = not circle.Anchored
-end)
-
-gui:AddChild(circle)
-gui:AddChild(button)
-
-gui.Visible = true
-
 -- // Vars
 local Heartbeat = RunService.Heartbeat
 local LocalPlayer = Players.LocalPlayer
