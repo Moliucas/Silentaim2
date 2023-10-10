@@ -72,7 +72,7 @@ circle.Transparency = 1
 circle.Thickness = 2
 circle.Color = Aiming.FOVColour
 circle.Filled = false
-circle.Anchored = true
+circle.Anchored = false
 Aiming.FOVCircle = circle
 
 -- // Update
