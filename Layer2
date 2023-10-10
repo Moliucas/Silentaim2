@@ -5,13 +5,14 @@ local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
 local GuiService = game:GetService("GuiService")
 local RunService = game:GetService("RunService")
-local screenSize1 = game:GetService("GuiService"):GetScreenSize()
+local screenSize = game:GetService("GuiService"):GetScreenSize()
 
 -- // Vars
 local Heartbeat = RunService.Heartbeat
 local LocalPlayer = Players.LocalPlayer
 local CurrentCamera = Workspace.CurrentCamera
 local Mouse = LocalPlayer:GetMouse()
+local screenSize = game:GetService("GuiService"):GetScreenSize()
 
 -- // Optimisation Vars (ugly)
 local Drawingnew = Drawing.new
@@ -73,13 +74,20 @@ circle.Transparency = 1
 circle.Thickness = 2
 circle.Color = Aiming.FOVColour
 circle.Filled = false
-circle.Anchored = true
+circle.Anchored = false
 Aiming.FOVCircle = circle
+
+-- // Update
+function Aiming.UpdateFOV()
+    -- // Make sure the circle exists
+    if not (circle) then
+        return
+    end
 
     -- // Set Circle Properties
     circle.Visible = Aiming.ShowFOV
     circle.Radius = (Aiming.FOV * 3)
-    circle.Position = Vector2new(1239, 537)
+    circle.Position = Vector2new(screenSize.X / 1239, screenSize.Y / 537)
     circle.NumSides = Aiming.FOVSides
     circle.Color = Aiming.FOVColour
 
