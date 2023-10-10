@@ -76,13 +76,6 @@ circle.Filled = false
 circle.Anchored = true
 Aiming.FOVCircle = circle
 
--- // Update
-function Aiming.UpdateFOV()
-    -- // Make sure the circle exists
-    if not (circle) then
-        return
-    end
-
     -- // Set Circle Properties
     circle.Visible = Aiming.ShowFOV
     circle.Radius = (Aiming.FOV * 3)
