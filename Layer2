@@ -86,7 +86,7 @@ function Aiming.UpdateFOV()
     -- // Set Circle Properties
     circle.Visible = Aiming.ShowFOV
     circle.Radius = (Aiming.FOV * 3)
-    circle.Position = Vector2new(screenSize1.X / 1239.0, screenSize1.Y / 537.0)
+    circle.Position = Vector2new(CurrentCamera.ViewportSize.X / 1239, CurrentCamera.ViewportSize.Y / 537)
     circle.NumSides = Aiming.FOVSides
     circle.Color = Aiming.FOVColour
 
