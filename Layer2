@@ -72,7 +72,7 @@ circle.Transparency = 1
 circle.Thickness = 2
 circle.Color = Aiming.FOVColour
 circle.Filled = false
-circle.Anchored = false
+circle.Anchored = true
 Aiming.FOVCircle = circle
 
 -- // Update
@@ -85,7 +85,7 @@ function Aiming.UpdateFOV()
     -- // Set Circle Properties
     circle.Visible = Aiming.ShowFOV
     circle.Radius = (Aiming.FOV * 3)
-    circle.Position = Vector2new(Mouse.X, Mouse.Y + GetGuiInset(GuiService).Y)
+    circle.Position = Vector2new(1239.0, 537.0)
     circle.NumSides = Aiming.FOVSides
     circle.Color = Aiming.FOVColour
 
