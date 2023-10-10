@@ -10,7 +10,6 @@ local RunService = game:GetService("RunService")
 local Heartbeat = RunService.Heartbeat
 local LocalPlayer = Players.LocalPlayer
 local CurrentCamera = Workspace.CurrentCamera
-local screenSize = game:GetService("GuiService"):GetScreenSize()
 local Mouse = LocalPlayer:GetMouse()
 
 -- // Optimisation Vars (ugly)
