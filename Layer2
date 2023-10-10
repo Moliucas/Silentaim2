@@ -10,8 +10,8 @@ local RunService = game:GetService("RunService")
 local Heartbeat = RunService.Heartbeat
 local LocalPlayer = Players.LocalPlayer
 local CurrentCamera = Workspace.CurrentCamera
-local Mouse = LocalPlayer:GetMouse()
 local screenSize = game:GetService("GuiService"):GetScreenSize()
+local Mouse = LocalPlayer:GetMouse()
 
 -- // Optimisation Vars (ugly)
 local Drawingnew = Drawing.new
@@ -73,7 +73,7 @@ circle.Transparency = 1
 circle.Thickness = 2
 circle.Color = Aiming.FOVColour
 circle.Filled = false
-circle.Anchored = true
+circle.Anchor = true
 Aiming.FOVCircle = circle
 
 -- // Update
@@ -321,7 +321,7 @@ function Aiming.GetClosestTargetPartToCursor(Character)
     local ClosestPart = nil
     local ClosestPartPosition = nil
     local ClosestPartOnScreen = false
-    local ClosestPartMagnitudeFromscreenSize = nil
+    local ClosestPartMagnitudeFromMouse = nil
     local ShortestDistance = 1/0
 
     -- //
@@ -339,14 +339,14 @@ function Aiming.GetClosestTargetPartToCursor(Character)
         -- // Get the length between Mouse and Target Part (on screen)
         local PartPos, onScreen = WorldToViewportPoint(CurrentCamera, TargetPart.Position)
         local GuiInset = GetGuiInset(GuiService)
-        local Magnitude = (Vector2new(PartPos.X, PartPos.Y - GuiInset.Y) - Vector2new(screenSize.X, screenSize.Y)).Magnitude
+        local Magnitude = (Vector2new(PartPos.X, PartPos.Y - GuiInset.Y) - Vector2new(Mouse.X, Mouse.Y)).Magnitude
 
         -- //
         if (Magnitude < ShortestDistance) then
             ClosestPart = TargetPart
             ClosestPartPosition = PartPos
             ClosestPartOnScreen = onScreen
-            ClosestPartMagnitudeFromscreenSize = Magnitude
+            ClosestPartMagnitudeFromMouse = Magnitude
             ShortestDistance = Magnitude
         end
     end
