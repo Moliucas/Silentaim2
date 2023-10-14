@@ -94,6 +94,29 @@ function Aiming.UpdateFOV()
     return circle
 end
 
+local CutsceneService = game:GetService("CutsceneService")
+
+-- Get the current position of the mouse cursor
+local CurrentMousePosition = Mouse.X, Mouse.Y
+
+-- Move the mouse cursor to the center of the screen
+Mouse:Move(game.Players.LocalPlayer.ViewportSize.X / 2, game.Players.LocalPlayer.ViewportSize.Y / 2)
+
+-- Disable the mouse cursor
+Mouse.Visible = false
+
+-- Play the cutscene
+CutsceneService:PlayCutscene("CutsceneName")
+
+-- Wait for the cutscene to finish
+CutsceneService.CutscenePlaying.Wait()
+
+-- Enable the mouse cursor again
+Mouse.Visible = true
+
+-- Move the mouse cursor back to its original position
+Mouse:Move(CurrentMousePosition)
+
 -- // Custom Functions
 local CalcChance = function(percentage)
     -- // Floor the percentage
