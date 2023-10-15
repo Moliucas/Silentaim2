@@ -52,7 +52,7 @@ getgenv().Aiming = {
     Selected = nil,
     SelectedPart = nil,
 
-    TargetPart = {"UpperTorso"},
+    TargetPart = {"Head", "UpperTorso", "HumanoidRootPart", "LowerTorso"},
 
     Ignored = {
         Teams = {
@@ -72,12 +72,10 @@ local Aiming = getgenv().Aiming
 -- // Create circle
 local circle = Drawingnew("Circle")
 circle.Transparency = 1
-circle = false
-circle.Outline = true
 circle.Thickness = 2
 circle.Color = Aiming.FOVColour
-circle.Filled = false
 circle.OutlineColor = Aiming.FOVColour
+circle.Filled = false
 Aiming.FOVCircle = circle
 
 -- // Update
@@ -92,8 +90,8 @@ function Aiming.UpdateFOV()
     circle.Radius = Aiming.FOV
     circle.Position = Vector2new(CurrentCamera.ViewportSize.X / 2, CurrentCamera.ViewportSize.Y / 2)
     circle.NumSides = Aiming.FOVSides
-    circle.OutlineColor = Aiming.FOVColour
     circle.Color = Aiming.FOVColour
+    circle.OutlineColor = Aiming.FOVColour
 
     -- // Return circle
     return circle
