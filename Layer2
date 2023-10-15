@@ -74,7 +74,6 @@ local circle = Drawingnew("Circle")
 circle.Transparency = 1
 circle.Thickness = 2
 circle.Color = Aiming.FOVColour
-circle.OutlineColor = Aiming.FOVColour
 circle.Filled = false
 Aiming.FOVCircle = circle
 
@@ -91,7 +90,6 @@ function Aiming.UpdateFOV()
     circle.Position = Vector2new(CurrentCamera.ViewportSize.X / 2, CurrentCamera.ViewportSize.Y / 2)
     circle.NumSides = Aiming.FOVSides
     circle.Color = Aiming.FOVColour
-    circle.OutlineColor = Aiming.FOVColour
 
     -- // Return circle
     return circle
