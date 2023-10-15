@@ -1,5 +1,8 @@
-if getgenv().Aiming then return getgenv().Aiming end
+--// Made By thatsnotmatt#2602 \\--
 
+if getgenv().Aiming 
+then return getgenv().Aiming 
+end
 -- // Services
 local Players = game:GetService("Players")
 local Workspace = game:GetService("Workspace")
@@ -11,7 +14,6 @@ local Heartbeat = RunService.Heartbeat
 local LocalPlayer = Players.LocalPlayer
 local CurrentCamera = Workspace.CurrentCamera
 local Mouse = LocalPlayer:GetMouse()
-local screenSize = game:GetService("GuiService"):GetScreenSize()
 
 -- // Optimisation Vars (ugly)
 local Drawingnew = Drawing.new
@@ -41,8 +43,8 @@ getgenv().Aiming = {
     ShowFOV = true,
     FOV = 119,
     FOVSides = 300,
-    FOVColour = Color3fromRGB(0, 147, 255),
-
+    FOVColour = Color3fromRGB(181.999875, 10.0000035, 255),
+   
     VisibleCheck = true,
     
     HitChance = 110,
@@ -50,7 +52,7 @@ getgenv().Aiming = {
     Selected = nil,
     SelectedPart = nil,
 
-    TargetPart = {"Head", "UpperTorso", "HumanoidRootPart", "LowerTorso"},
+    TargetPart = {"UpperTorso"},
 
     Ignored = {
         Teams = {
@@ -70,10 +72,12 @@ local Aiming = getgenv().Aiming
 -- // Create circle
 local circle = Drawingnew("Circle")
 circle.Transparency = 1
+circle = false
+circle.Outline = true
 circle.Thickness = 2
 circle.Color = Aiming.FOVColour
 circle.Filled = false
-circle.Anchored = true
+circle.OutlineColor = Aiming.FOVColour
 Aiming.FOVCircle = circle
 
 -- // Update
@@ -85,37 +89,15 @@ function Aiming.UpdateFOV()
 
     -- // Set Circle Properties
     circle.Visible = Aiming.ShowFOV
-    circle.Radius = (Aiming.FOV * 3)
-    circle.Position = Vector2new(screenSize.X / 1239, screenSize.Y / 537)
+    circle.Radius = Aiming.FOV
+    circle.Position = Vector2new(CurrentCamera.ViewportSize.X / 2, CurrentCamera.ViewportSize.Y / 2)
     circle.NumSides = Aiming.FOVSides
+    circle.OutlineColor = Aiming.FOVColour
     circle.Color = Aiming.FOVColour
 
     -- // Return circle
     return circle
 end
-
-local CutsceneService = game:GetService("CutsceneService")
-
--- Get the current position of the mouse cursor
-local CurrentMousePosition = Mouse.X, Mouse.Y
-
--- Move the mouse cursor to the center of the screen
-Mouse:Move(game.Players.LocalPlayer.ViewportSize.X / 2, game.Players.LocalPlayer.ViewportSize.Y / 2)
-
--- Disable the mouse cursor
-Mouse.Visible = false
-
--- Play the cutscene
-CutsceneService:PlayCutscene("CutsceneName")
-
--- Wait for the cutscene to finish
-CutsceneService.CutscenePlaying.Wait()
-
--- Enable the mouse cursor again
-Mouse.Visible = true
-
--- Move the mouse cursor back to its original position
-Mouse:Move(CurrentMousePosition)
 
 -- // Custom Functions
 local CalcChance = function(percentage)
@@ -362,7 +344,7 @@ function Aiming.GetClosestTargetPartToCursor(Character)
         -- // Get the length between Mouse and Target Part (on screen)
         local PartPos, onScreen = WorldToViewportPoint(CurrentCamera, TargetPart.Position)
         local GuiInset = GetGuiInset(GuiService)
-        local Magnitude = (Vector2new(PartPos.X, PartPos.Y - GuiInset.Y) - Vector2new(screenSize.X / 1239, screenSize.Y / 537)).Magnitude
+        local Magnitude = (Vector2new(PartPos.X, PartPos.Y - GuiInset.Y) - Vector2new(CurrentCamera.ViewportSize.X / 2, CurrentCamera.ViewportSize.Y / 2)).Magnitude
 
         -- //
         if (Magnitude < ShortestDistance) then
