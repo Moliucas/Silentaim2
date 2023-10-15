@@ -55,7 +55,7 @@ getgenv().Aiming = {
     TargetPart = {"Head", "UpperTorso", "HumanoidRootPart", "LowerTorso"},
 
     Ignored = {
-        Teams = {"nar6ssist"
+        Teams = {
             {
                 Team = LocalPlayer.Team,
                 TeamColor = LocalPlayer.TeamColor,
