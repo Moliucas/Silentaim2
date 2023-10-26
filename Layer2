@@ -308,15 +308,6 @@ function Aiming.CheckHealth(Player)
     return Health > 0
 end
 
--- // Check if player is down
-function Aiming.checkSilentAim = function()
-    local checkA = (function Aiming.SilentAimEnabled == true and function Aiming.Selected ~= LocalPlayer)
-    local playerCharacter = SilentAim.Selected.Character
-    local daHood = (playerCharacter.BodyEffects["K.O"].Value == false or playerCharacter:FindFirstChild("GRABBING_CONSTRAINT") ~= nil)
-
-    return (checkA and daHood)
-end
-
 -- // Check if silent aim can used
 function Aiming.Check()
     return (Aiming.Enabled == true and Aiming.Selected ~= LocalPlayer and Aiming.SelectedPart ~= nil)
