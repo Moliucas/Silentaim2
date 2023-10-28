@@ -40,6 +40,7 @@ local tableinsert = table.insert
 getgenv().Aiming = {
     Enabled = true,
 
+    Notification = true
     ShowFOV = false,
     FOV = 119,
     FOVSides = 25,
@@ -74,7 +75,8 @@ local circle = Drawingnew("Circle")
 circle.Transparency = 0.05
 circle.Thickness = 2
 circle.Color = Aiming.FOVColour
-circle.Filled = true
+circle.Filled = false
+Aiming.FOVCircle = circle
 
 -- // Update
 function Aiming.UpdateFOV()
